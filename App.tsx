@@ -29,7 +29,8 @@ function App() {
     } catch (err) {
       console.error(err);
       setStatus(FetchStatus.ERROR);
-      setErrorMsg("Failed to retrieve jobs from the cosmos. Try again.");
+      const errorMessage = err instanceof Error ? err.message : "Failed to retrieve jobs from the cosmos. Try again.";
+      setErrorMsg(errorMessage);
     }
   }, []);
 
